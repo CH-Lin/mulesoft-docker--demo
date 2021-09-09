@@ -1,0 +1,137 @@
+services:
+  financial-db-jp:
+    image: demo/financial-db
+    build: ./financial-db/
+    container_name: demo-financial-db-jp
+    hostname: financial-db-jp
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    privileged: true
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.10
+    ports:
+      - "3106:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=DemoPW!
+    healthcheck:
+        test: ["CMD", "mysql", "-uroot", "-pDemoPW!"]
+        interval: 30s
+        timeout: 10s
+        retries: 100
+
+  financial-db-usa:
+    image: demo/financial-db
+    build: ./financial-db/
+    container_name: demo-financial-db-usa
+    hostname: financial-db-usa
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    privileged: true
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.11
+    ports:
+      - "3206:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=DemoPW!
+    healthcheck:
+        test: ["CMD", "mysql", "-uroot", "-pDemoPW!"]
+        interval: 30s
+        timeout: 10s
+        retries: 100
+
+  employee-db:
+    image: demo/employee-db
+    build: ./employee-db/
+    container_name: demo-employee-db
+    hostname: employee-db
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    privileged: true
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.12
+    ports:
+      - "3406:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=DemoPW!
+    healthcheck:
+        test: ["CMD", "mysql", "-uroot", "-pDemoPW!"]
+        interval: 30s
+        timeout: 10s
+        retries: 100
+
+  financial-server-jp:
+    image: demo/financial-server-jp
+    build: ./financial-server-jp/
+    container_name: demo-financial-server-jp
+    hostname: financial-server-jp
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.13
+    ports:
+      - "8081:8080"
+    depends_on:
+      financial-db-jp:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  financial-server-usa:
+    image: demo/financial-server-usa
+    build: ./financial-server-usa/
+    container_name: demo-financial-server-usa
+    hostname: financial-server-usa
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.14
+    ports:
+      - "8082:8080"
+    depends_on:
+      financial-db-usa:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+  employee-server:
+    image: demo/employee-server
+    build: ./employee-server/
+    container_name: demo-employee-server
+    hostname: employee-server
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      demo-network:
+        ipv4_address: 192.168.13.15
+    ports:
+      - "8083:8080"
+    depends_on:
+      employee-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+
+networks:
+  demo-network:
+    name: demo-network
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.13.0/24"

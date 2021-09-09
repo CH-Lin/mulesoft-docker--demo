@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/anyroute-app.iml" filepath="$PROJECT_DIR$/app/anyroute-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/anyroute-common.iml" filepath="$PROJECT_DIR$/common/anyroute-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domain/anyroute-domain.iml" filepath="$PROJECT_DIR$/domain/anyroute-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/anyroute-web.iml" filepath="$PROJECT_DIR$/web/anyroute-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../platform/core/core.iml" filepath="$PROJECT_DIR$/../platform/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/employee.iml" filepath="$PROJECT_DIR$/employee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../platform/parent/parent.iml" filepath="$PROJECT_DIR$/../platform/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../platform/platform.iml" filepath="$PROJECT_DIR$/../platform/platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../platform/security/security.iml" filepath="$PROJECT_DIR$/../platform/security/security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../platform/security-core/security-core.iml" filepath="$PROJECT_DIR$/../platform/security-core/security-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+    </modules>
+  </component>
+</project>

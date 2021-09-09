@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="app" />
+        <module name="core" />
+        <module name="security-core" />
+        <module name="security" />
+        <module name="anyroute-web" />
+        <module name="common" />
+        <module name="web" />
+        <module name="anyroute-app" />
+        <module name="domain" />
+        <module name="anyroute-domain" />
+        <module name="anyroute-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="anyroute-app" target="11" />
+      <module name="anyroute-common" target="11" />
+      <module name="anyroute-domain" target="11" />
+      <module name="anyroute-manage" target="11" />
+      <module name="anyroute-web" target="11" />
+      <module name="app" target="11" />
+      <module name="common" target="11" />
+      <module name="core" target="8" />
+      <module name="domain" target="11" />
+      <module name="employee" target="11" />
+      <module name="parent" target="8" />
+      <module name="platform" target="8" />
+      <module name="security" target="8" />
+      <module name="security-core" target="8" />
+      <module name="web" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="anyroute-app" options="-parameters -Xlint:all,-processing" />
+      <module name="anyroute-common" options="-parameters -Xlint:all,-processing" />
+      <module name="anyroute-domain" options="-parameters -Xlint:all,-processing" />
+      <module name="anyroute-manage" options="-parameters -Xlint:all,-processing" />
+      <module name="anyroute-web" options="-parameters -Xlint:all,-processing" />
+      <module name="app" options="-parameters -Xlint:all,-processing" />
+      <module name="common" options="-parameters -Xlint:all,-processing" />
+      <module name="core" options="-Xlint:all,-processing" />
+      <module name="domain" options="-parameters -Xlint:all,-processing" />
+      <module name="employee" options="" />
+      <module name="parent" options="" />
+      <module name="security" options="-Xlint:all,-processing" />
+      <module name="security-core" options="-Xlint:all,-processing" />
+      <module name="web" options="-parameters -Xlint:all,-processing" />
+    </option>
+  </component>
+</project>

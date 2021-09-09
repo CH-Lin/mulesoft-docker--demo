@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Employee Domain</a> &gt; <a href="index.source.html" class="el_package">com.employee.domain.model</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">package com.employee.domain.model;
+
+import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.employee.domain.model.Employee.*;
+
+
+@Table(name = TABLE_NAME, indexes = {@Index(name = EMPLOYEE_ID_IDX, columnList = EMPLOYEE_ID)},
+        uniqueConstraints = {@UniqueConstraint(columnNames = {&quot;employeeName&quot;, &quot;employeeEmail&quot;})})
+@Entity
+public class Employee {
+
+    public static final String TABLE_NAME = &quot;Employee&quot;;
+    public static final String EMPLOYEE_ID = &quot;EmployeeID&quot;;
+    public static final String EMPLOYEE_ID_IDX = &quot;employee_id_index&quot;;
+
+    @Id
+<span class="fc" id="L26">    @Getter</span>
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;EmployeeID&quot;)
+    private long employeeID;
+
+<span class="fc" id="L31">    @Getter</span>
+<span class="fc" id="L32">    @Setter</span>
+    @NotNull
+    private String employeeName = null;
+
+<span class="pc" id="L36">    @Getter</span>
+<span class="fc" id="L37">    @Setter</span>
+    @NotNull
+    private String employeeEmail = null;
+
+<span class="nc" id="L41">    @Getter</span>
+<span class="nc" id="L42">    @Setter</span>
+    private Long salary;
+
+<span class="nc" id="L45">    @Getter</span>
+<span class="nc" id="L46">    @Setter</span>
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = &quot;employee&quot;)
+    private List&lt;Reimbursement&gt; reimbursements;
+
+<span class="fc" id="L50">    public Employee() {</span>
+<span class="fc" id="L51">    }</span>
+
+<span class="fc" id="L53">    public Employee(String employeeName, String employeeEmail, Long salary) {</span>
+<span class="fc" id="L54">        this.employeeName = employeeName;</span>
+<span class="fc" id="L55">        this.employeeEmail = employeeEmail;</span>
+<span class="fc" id="L56">        this.salary = salary;</span>
+<span class="fc" id="L57">        reimbursements = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L58">    }</span>
+
+    public void addReimbursement(Reimbursement reimbursement) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (reimbursements == null) {</span>
+<span class="fc" id="L62">            reimbursements = new ArrayList&lt;&gt;();</span>
+        }
+<span class="fc" id="L64">        reimbursements.add(reimbursement);</span>
+<span class="fc" id="L65">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L69">        return &quot;Employee{&quot; +</span>
+                &quot;employeeID=&quot; + employeeID +
+                &quot;, employeeName='&quot; + employeeName + '\'' +
+                &quot;, employeeEmail='&quot; + employeeEmail + '\'' +
+                &quot;, salary=&quot; + salary +
+                &quot;, reimbursements=&quot; + reimbursements +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

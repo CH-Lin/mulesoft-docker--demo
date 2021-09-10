@@ -1,8 +1,0 @@
-com/financial/common/request/PaymentRequest.class
-com/financial/common/exception/BudgetExistException.class
-com/financial/common/exception/BudgetNotFoundException.class
-com/financial/common/BaseDao.class
-com/financial/common/exception/BudgetNotEnoughException.class
-com/financial/common/HibernateDynamicPersistenceProvider.class
-com/financial/common/request/AddBudgetRequest.class
-com/financial/common/BaseDaoImpl.class

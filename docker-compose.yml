@@ -2,8 +2,8 @@ services:
   financial-db-jp:
     image: demo/financial-db
     build: ./financial-db/
-    container_name: demo-financial-db-jp
-    hostname: financial-db-jp
+    container_name: demo-financial-jp-db
+    hostname: financial-jp-db
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -24,8 +24,8 @@ services:
   financial-db-usa:
     image: demo/financial-db
     build: ./financial-db/
-    container_name: demo-financial-db-usa
-    hostname: financial-db-usa
+    container_name: demo-financial-usa-db
+    hostname: financial-usa-db
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -68,8 +68,8 @@ services:
   financial-server-jp:
     image: demo/financial-server-jp
     build: ./financial-server-jp/
-    container_name: demo-financial-server-jp
-    hostname: financial-server-jp
+    container_name: demo-financial-jp-server
+    hostname: financial-jp-server
     stdin_open: true
     tty: true
     restart: unless-stopped
@@ -89,8 +89,8 @@ services:
   financial-server-usa:
     image: demo/financial-server-usa
     build: ./financial-server-usa/
-    container_name: demo-financial-server-usa
-    hostname: financial-server-usa
+    container_name: demo-financial-usa-server
+    hostname: financial-usa-server
     stdin_open: true
     tty: true
     restart: unless-stopped

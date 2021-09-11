@@ -21,9 +21,9 @@ public class BudgetServiceImpl implements BudgetService {
         budgetDao.addBudget(budget);
     }
 
-    public void updateBudget(int year, long amount) throws BudgetNotFoundException {
+    public void subtractBudget(int year, long amount) throws BudgetNotFoundException {
         Budget budget = budgetDao.getBudget(year);
-        budget.setAmount(amount);
+        budget.setAmount(budget.getAmount() - amount);
         budgetDao.updateBudget(budget);
     }
 

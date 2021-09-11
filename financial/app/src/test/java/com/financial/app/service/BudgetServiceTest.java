@@ -73,13 +73,13 @@ class BudgetServiceTest extends DatabaseUnitTest {
     }
 
     @Test
-    public void testUpdateBudget() throws BudgetNotFoundException, BudgetExistException {
+    public void testSubtractBudget() throws BudgetNotFoundException, BudgetExistException {
         int year = 2021;
         long amount = 1000000;
         budgetService.addBudget(year, amount);
-        budgetService.updateBudget(year, amount * 2);
+        budgetService.subtractBudget(year, amount);
         long result = budgetService.getBudget(year);
-        assertEquals(amount * 2, result);
+        assertEquals(0, result);
     }
 
     @Test

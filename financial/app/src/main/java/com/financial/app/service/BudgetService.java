@@ -8,7 +8,7 @@ public interface BudgetService {
 
     public void addBudget(int year, long amount) throws BudgetExistException;
 
-    public void updateBudget(int year, long amount) throws BudgetNotFoundException;
+    public void subtractBudget(int year, long amount) throws BudgetNotFoundException;
 
     public Long getBudget() throws BudgetNotFoundException;
 

@@ -6,7 +6,7 @@ import com.financial.common.exception.BudgetNotEnoughException;
 import com.financial.common.exception.BudgetNotFoundException;
 import com.financial.common.request.AddBudgetRequest;
 import com.financial.common.request.PaymentRequest;
-import com.financial.common.request.UpdateBudgetRequest;
+import com.financial.common.request.SubtractBudgetRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -59,12 +59,12 @@ public class FinancialSystem {
         return amount;
     }
 
-    @PatchMapping(value = "/update/budget")
+    @PatchMapping(value = "/subtract/budget")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateBudget(@RequestBody final UpdateBudgetRequest req, @Context final HttpServletResponse response) {
+    public Response updateBudget(@RequestBody final SubtractBudgetRequest req, @Context final HttpServletResponse response) {
         try {
-            budgetService.updateBudget(req.getYear(), req.getAmount());
+            budgetService.subtractBudget(req.getYear(), req.getAmount());
         } catch (BudgetNotFoundException e) {
             response.setStatus(Response.Status.BAD_REQUEST.getStatusCode());
             return Response.status(Response.Status.BAD_REQUEST).entity(new String("There is no budget available for " + req.getYear())).build();

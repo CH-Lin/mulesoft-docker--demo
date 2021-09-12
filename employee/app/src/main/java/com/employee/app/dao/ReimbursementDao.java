@@ -11,4 +11,6 @@ public interface ReimbursementDao extends BaseDao<Reimbursement> {
 
     public List<Reimbursement> getReimbursement(String name, String email, int year, int month);
 
+    public int cleanup();
+
 }

@@ -57,7 +57,6 @@ class BudgetServiceTest extends DatabaseUnitTest {
     public void testGetBudgetNotExist() {
         Assertions.assertThrows(BudgetNotFoundException.class, () -> {
             int year = 2021;
-            int month = 3;
             int amount = 100000000;
             budgetService.addBudget(year, amount);
             long result = budgetService.getBudget(year - 1);
@@ -68,7 +67,7 @@ class BudgetServiceTest extends DatabaseUnitTest {
     @Test
     public void testGetBudgetNotExistForWholeYear() {
         Assertions.assertThrows(BudgetNotFoundException.class, () -> {
-            long result = budgetService.getBudget();
+            budgetService.getBudget();
         });
     }
 
@@ -101,6 +100,16 @@ class BudgetServiceTest extends DatabaseUnitTest {
             long payment = amount + 1;
             budgetService.addBudget(year, amount);
             budgetService.payment(year, payment);
+        });
+    }
+
+    @Test
+    public void testCleanup() {
+        Assertions.assertThrows(BudgetNotFoundException.class, () -> {
+            budgetService.addBudget(2020, 1000000);
+            budgetService.addBudget(2021, 1000000);
+            budgetService.cleanup();
+            budgetService.getBudget();
         });
     }
 

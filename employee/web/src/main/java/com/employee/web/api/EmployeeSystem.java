@@ -105,4 +105,11 @@ public class EmployeeSystem {
         /* return Response.status(Response.Status.OK).entity(result).build(); */
     }
 
+    @PostMapping(value = "/cleanup")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cleanup() {
+        employeeService.cleanup();
+        return Response.status(Response.Status.OK).entity("OK").build();
+    }
+
 }

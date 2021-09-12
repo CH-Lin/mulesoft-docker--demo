@@ -17,4 +17,6 @@ public interface BudgetDao extends BaseDao<Budget> {
 
     public Budget getBudget(int year) throws BudgetNotFoundException;
 
+    public int cleanup();
+
 }

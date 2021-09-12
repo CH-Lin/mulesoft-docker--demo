@@ -17,4 +17,6 @@ public interface EmployeeDao extends BaseDao<Employee> {
 
     public void updateEmployee(Employee employee);
 
+    public int cleanup();
+
 }

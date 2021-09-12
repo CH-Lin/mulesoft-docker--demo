@@ -24,4 +24,6 @@ public interface EmployeeService {
 
     public List<ReimbursementInfoResponse> getReimbursement(String name, String email, int year, int month);
 
+    public int cleanup();
+
 }

@@ -88,4 +88,11 @@ public class FinancialSystem {
         return Response.status(Response.Status.OK).entity(new String("OK")).build();
     }
 
+    @PostMapping(value = "/cleanup")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cleanup() {
+        budgetService.cleanup();
+        return Response.status(Response.Status.OK).entity("OK").build();
+    }
+
 }

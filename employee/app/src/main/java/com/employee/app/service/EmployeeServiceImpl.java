@@ -87,4 +87,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return convertToResponse(reimbursementDao.getReimbursement(name, email, year, (month - 1)));
     }
 
+    public int cleanup() {
+        return reimbursementDao.cleanup() + employeeDao.cleanup();
+    }
+
 }

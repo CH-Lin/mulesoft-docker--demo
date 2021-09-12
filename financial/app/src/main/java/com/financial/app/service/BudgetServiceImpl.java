@@ -52,4 +52,8 @@ public class BudgetServiceImpl implements BudgetService {
         budgetDao.updateBudget(budget);
     }
 
+    public int cleanup() {
+        return budgetDao.cleanup();
+    }
+
 }

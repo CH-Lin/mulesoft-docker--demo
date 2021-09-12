@@ -16,4 +16,6 @@ public interface BudgetService {
 
     public void payment(int year, long amount) throws BudgetNotFoundException, BudgetNotEnoughException;
 
+    public int cleanup();
+
 }

@@ -185,4 +185,19 @@ class EmployeeServiceTest extends DatabaseUnitTest {
         assertEquals(3, result.size());
     }
 
+    @Test
+    public void testCleanup() throws EmployeeExistException, EmployeeNotFoundException {
+        final int year = 2021;
+        final String name = "John";
+        final String email = "john@company.com";
+        final long salary = 1500000;
+        createEmployee(name, email, salary);
+        addReimbursements(year, name, email);
+        employeeService.cleanup();
+        List<ReimbursementInfoResponse> result = employeeService.getReimbursement(null, null, year, -1);
+        assertEquals(0, result.size());
+        List<EmployeeInfoResponse> results = employeeService.getAllEmployee();
+        assertEquals(0, results.size());
+    }
+
 }

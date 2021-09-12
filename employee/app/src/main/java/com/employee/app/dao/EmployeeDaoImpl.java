@@ -54,4 +54,10 @@ public class EmployeeDaoImpl extends BaseDaoImpl<Employee> implements EmployeeDa
         mergeObject(employee);
     }
 
+    @Transactional
+    public int cleanup() {
+        int deletedCount = getEntityManager().createQuery("DELETE FROM Employee").executeUpdate();
+        return deletedCount;
+    }
+
 }

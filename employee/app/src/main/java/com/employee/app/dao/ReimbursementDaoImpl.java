@@ -48,4 +48,10 @@ public class ReimbursementDaoImpl extends BaseDaoImpl<Reimbursement> implements 
         return query.getResultList();
     }
 
+    @Transactional
+    public int cleanup() {
+        int deletedCount = getEntityManager().createQuery("DELETE FROM Reimbursement").executeUpdate();
+        return deletedCount;
+    }
+
 }

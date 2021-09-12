@@ -47,4 +47,10 @@ public class BudgetDaoImpl extends BaseDaoImpl<Budget> implements BudgetDao {
         }
     }
 
+    @Transactional
+    public int cleanup() {
+        int deletedCount = getEntityManager().createQuery("DELETE FROM Budget").executeUpdate();
+        return deletedCount;
+    }
+
 }
